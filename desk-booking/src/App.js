@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DeskCollection from "./components/Desks/DeskCollection";
 import Card from "./components/UI/Card";
 import User from "./components/User/User";
 import DeskSelection from "./components/Desks/DeskSelection";
 import Confirmation from "./components/Desks/Confirmation";
+import axios from "axios";
 
 import "./App.css";
 
@@ -155,7 +156,14 @@ const SLOT_DETAILS = [
 ];
 
 const App = () => {
-  const [slots, setSlots] = useState(SLOT_DETAILS);
+  const [slots, setSlots] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/api/activities").then((response) => {
+      setSlots(response.data);
+    });
+  }, []);
+
   const [rules, setRules] = useState(FLOOR_RULES);
   const [user, setUser] = useState("");
 
@@ -167,20 +175,17 @@ const App = () => {
     setSlots((prevSlots) => {
       return prevSlots.map((object) =>
         object.name === name
-          ? { ...object, bookingStatus: true, userSelection: true}
+          ? { ...object, bookingStatus: true, userSelection: true }
           : object
       );
     });
     setConfirmationUI(true);
   };
-  
 
   const userSelectionHandler = (name) => {
     setSlots((prevSlots) => {
       return prevSlots.map((object) =>
-        object.name === name
-          ? { ...object, userSelection: true}
-          : object
+        object.name === name ? { ...object, userSelection: true } : object
       );
     });
     if (user === "employee") {
@@ -191,7 +196,13 @@ const App = () => {
 
   const spacingChangeHandler = (newSpacing) => {
     setRules((prevRules) => {
-      return { ...prevRules, spacing: (prevRules.spacing + newSpacing)>=0?prevRules.spacing + newSpacing : 0 };
+      return {
+        ...prevRules,
+        spacing:
+          prevRules.spacing + newSpacing >= 0
+            ? prevRules.spacing + newSpacing
+            : 0,
+      };
     });
   };
 
@@ -230,7 +241,7 @@ const App = () => {
     setDeskUI(false);
     setConfirmationUI(false);
     setSelectionUI(false);
-    setUser('');
+    setUser("");
     // setSlots((prevSlots) => {
     //   return prevSlots.map((object) =>
     //     object.userSelection === true
@@ -238,7 +249,7 @@ const App = () => {
     //       : object
     //   );
     // });
-  }
+  };
 
   return (
     <div>
@@ -273,7 +284,9 @@ const App = () => {
             />
           </Card>
         )}
-        {confirmationUI === true && <Confirmation slots={slots} user={user} onHomeReq={homeReqHandler} />}
+        {confirmationUI === true && (
+          <Confirmation slots={slots} user={user} onHomeReq={homeReqHandler} />
+        )}
       </Card>
     </div>
   );
