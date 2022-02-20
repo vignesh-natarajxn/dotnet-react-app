@@ -161,7 +161,6 @@ const App = () => {
   useEffect(() => {
     axios.get("http://localhost:5000/api/activities").then((response) => {
       setSlots(response.data);
-      console.log(response)
     });
   }, []);
 
