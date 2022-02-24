@@ -4,7 +4,8 @@ import Card from "./components/UI/Card";
 import User from "./components/User/User";
 import DeskSelection from "./components/Desks/DeskSelection";
 import Confirmation from "./components/Desks/Confirmation";
-import axios from "axios";
+import agent from "./app/api/agent.ts";
+
 
 import "./App.css";
 
@@ -159,10 +160,10 @@ const App = () => {
   const [slots, setSlots] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/activities").then((response) => {
-      setSlots(response.data);
+    agent.Activities.list().then(response => {
+      setSlots(response);
     });
-  }, []);
+  }, [])
 
   const [rules, setRules] = useState(FLOOR_RULES);
   const [user, setUser] = useState("");
