@@ -6,7 +6,6 @@ import DeskSelection from "./components/Desks/DeskSelection";
 import Confirmation from "./components/Desks/Confirmation";
 import agent from "./app/api/agent.ts";
 
-
 import "./App.css";
 
 const FLOOR_RULES = {
@@ -160,10 +159,10 @@ const App = () => {
   const [slots, setSlots] = useState([]);
 
   useEffect(() => {
-    agent.Activities.list().then(response => {
+    agent.Activities.list().then((response) => {
       setSlots(response);
     });
-  }, [])
+  }, []);
 
   const [rules, setRules] = useState(FLOOR_RULES);
   const [user, setUser] = useState("");
