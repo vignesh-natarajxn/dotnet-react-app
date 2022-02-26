@@ -10,7 +10,7 @@ const DeskCollection = (props) => {
 
   const userSelectionHandler = (name) => {
     props.onUserSelection(name);
-  }
+  };
   const bookingHandler = (name) => {
     props.onBooking(name);
   };

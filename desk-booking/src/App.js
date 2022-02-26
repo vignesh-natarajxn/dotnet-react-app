@@ -156,6 +156,8 @@ const SLOT_DETAILS = [
 ];
 
 const App = () => {
+  // const [submitting, setSubmitting] = useState(false);
+
   const [slots, setSlots] = useState([]);
 
   useEffect(() => {
@@ -180,6 +182,9 @@ const App = () => {
       );
     });
     setConfirmationUI(true);
+    slots.map((activity) => {
+      agent.Activities.update(activity).then();
+    })
   };
 
   const userSelectionHandler = (name) => {
@@ -188,6 +193,9 @@ const App = () => {
         object.name === name ? { ...object, userSelection: true } : object
       );
     });
+    slots.map((activity) => {
+      agent.Activities.update(activity).then();
+    })
     if (user === "employee") {
       setDeskUI(false);
     }
@@ -214,6 +222,9 @@ const App = () => {
           : object
       );
     });
+    slots.map((activity) => {
+      agent.Activities.update(activity).then();
+    })
   };
 
   const cancelHandler = (name) => {
@@ -224,6 +235,9 @@ const App = () => {
           : object
       );
     });
+    slots.map((activity) => {
+      agent.Activities.update(activity).then();
+    })
   };
 
   const userHandler = (userDetails) => {

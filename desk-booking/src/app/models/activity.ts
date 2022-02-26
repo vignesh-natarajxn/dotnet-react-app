@@ -1,9 +1,7 @@
 export interface Activity {
-
- Id :string;
- Name :string;  
- BookingStatus :boolean;
- Favorite :boolean;    
- UserSelection :boolean;
-
+  id: string;
+  name: string;
+  bookingStatus: boolean;
+  favorite: boolean;
+  userSelection: boolean;
 }
