@@ -6,10 +6,10 @@ const Confirmation = (props) => {
   const BOOKED_SLOTS = props.slots.filter(
     (slot) => slot.userSelection === true
   );
-  
+
   const homeHandler = () => {
-    props.onHomeReq()
-  }
+    props.onHomeReq();
+  };
   console.log(BOOKED_SLOTS);
 
   return (
@@ -19,12 +19,12 @@ const Confirmation = (props) => {
       ) : (
         <h1>The Desk bookings have been sent for approval!</h1>
       )}
-      <Card className='booking-ui'>
+      <Card className="booking-ui">
         <h2>Click to proceed to the home page</h2>
         <div>
           <button onClick={homeHandler}>Save and Home</button>
         </div>
-        </Card>
+      </Card>
     </Card>
   );
 };
