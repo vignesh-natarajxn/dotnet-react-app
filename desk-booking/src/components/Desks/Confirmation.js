@@ -22,7 +22,7 @@ const Confirmation = (props) => {
       <Card className='booking-ui'>
         <h2>Click to proceed to the home page</h2>
         <div>
-          <button onClick={homeHandler}>Home</button>
+          <button onClick={homeHandler}>Save and Home</button>
         </div>
         </Card>
     </Card>

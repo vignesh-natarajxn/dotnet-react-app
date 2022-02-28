@@ -235,6 +235,7 @@ const App = () => {
           : object
       );
     });
+    setConfirmationUI(true);
     slots.map((activity) => {
       agent.Activities.update(activity).then();
     })
@@ -243,12 +244,18 @@ const App = () => {
   const userHandler = (userDetails) => {
     setUser(userDetails);
     setDeskUI(true);
+    slots.map((activity) => {
+      agent.Activities.update(activity).then();
+    })
   };
 
   const submitHandler = () => {
     setConfirmationUI(true);
     setSelectionUI(false);
     setDeskUI(false);
+    slots.map((activity) => {
+      agent.Activities.update(activity).then();
+    })
   };
 
   const homeReqHandler = () => {
@@ -256,6 +263,9 @@ const App = () => {
     setConfirmationUI(false);
     setSelectionUI(false);
     setUser("");
+    slots.map((activity) => {
+      agent.Activities.update(activity).then();
+    })
     // setSlots((prevSlots) => {
     //   return prevSlots.map((object) =>
     //     object.userSelection === true
