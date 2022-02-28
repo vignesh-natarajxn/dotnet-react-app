@@ -184,7 +184,7 @@ const App = () => {
     setConfirmationUI(true);
     slots.map((activity) => {
       agent.Activities.update(activity).then();
-    })
+    });
   };
 
   const userSelectionHandler = (name) => {
@@ -195,7 +195,7 @@ const App = () => {
     });
     slots.map((activity) => {
       agent.Activities.update(activity).then();
-    })
+    });
     if (user === "employee") {
       setDeskUI(false);
     }
@@ -224,7 +224,7 @@ const App = () => {
     });
     slots.map((activity) => {
       agent.Activities.update(activity).then();
-    })
+    });
   };
 
   const cancelHandler = (name) => {
@@ -238,7 +238,7 @@ const App = () => {
     setConfirmationUI(true);
     slots.map((activity) => {
       agent.Activities.update(activity).then();
-    })
+    });
   };
 
   const userHandler = (userDetails) => {
@@ -246,7 +246,7 @@ const App = () => {
     setDeskUI(true);
     slots.map((activity) => {
       agent.Activities.update(activity).then();
-    })
+    });
   };
 
   const submitHandler = () => {
@@ -255,7 +255,7 @@ const App = () => {
     setDeskUI(false);
     slots.map((activity) => {
       agent.Activities.update(activity).then();
-    })
+    });
   };
 
   const homeReqHandler = () => {
@@ -265,7 +265,7 @@ const App = () => {
     setUser("");
     slots.map((activity) => {
       agent.Activities.update(activity).then();
-    })
+    });
     // setSlots((prevSlots) => {
     //   return prevSlots.map((object) =>
     //     object.userSelection === true
