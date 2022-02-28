@@ -156,8 +156,6 @@ const SLOT_DETAILS = [
 ];
 
 const App = () => {
-  // const [submitting, setSubmitting] = useState(false);
-
   const [slots, setSlots] = useState([]);
 
   useEffect(() => {
